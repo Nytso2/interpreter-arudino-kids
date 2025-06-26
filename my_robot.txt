@@ -1,0 +1,7 @@
+// My first robot program!
+print "Hello! I'm your robot!"
+turn_on 13
+wait 1000
+blink 13 3
+beep 8 500
+print "Robot is ready!"
