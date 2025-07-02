@@ -5,9 +5,9 @@
 #include <time.h>
 
 // ============================================================================
-// Author : Luis Coronel
 // ARDUINO KIDS PROGRAMMING LANGUAGE INTERPRETER
 // Converts simple kid-friendly syntax to Arduino C++ code
+// Resume Project - Professional Educational Compiler
 // ============================================================================
 
 // Token types for Arduino commands
@@ -839,6 +839,7 @@ int main(int argc, char* argv[]) {
             printf("   %s <filename>         - Compile kid-friendly Arduino program\n", argv[0]);
             printf("   %s --kids             - Run kid-friendly examples\n", argv[0]);
             printf("\n🔧 For Developers/Resume Mode:\n");
+            printf("   %s --dev <filename>   - Show full Arduino C++ code generation\n", argv[0]);
             printf("   %s --showcase         - Full technical demonstration\n", argv[0]);
             printf("   %s --examples         - All example programs with details\n", argv[0]);
             printf("\n📋 Kid-Friendly Arduino Commands:\n");
@@ -867,13 +868,28 @@ int main(int argc, char* argv[]) {
             return 0;
         }
         
+        if (strcmp(argv[1], "--dev") == 0 && argc > 2) {
+            // Developer mode - show full Arduino C++ generation
+            FILE* file = fopen(argv[2], "r");
+            if (file) {
+                char code[4096];
+                size_t bytes_read = fread(code, 1, sizeof(code) - 1, file);
+                code[bytes_read] = '\0';
+                fclose(file);
+                interpret_arduino_kids(code, 1);  // Show technical details
+            } else {
+                printf("❌ Error: Could not open file '%s'\n", argv[2]);
+                return 1;
+            }
+            return 0;
+        }
         
         // Default: kid-friendly mode for file input
         FILE* file = fopen(argv[1], "r");
         if (file) {
             char code[4096];
             size_t bytes_read = fread(code, 1, sizeof(code) - 1, file);
-             code[bytes_read] = '\0';
+            code[bytes_read] = '\0';
             fclose(file);
             interpret_arduino_kids(code, 0);  // Hide technical details
         } else {
@@ -883,15 +899,13 @@ int main(int argc, char* argv[]) {
         }
     } else {
         // Default: show kid-friendly examples
-        printf("Welcome to Arduino Kids Programming!\n");
+        printf("🎈 Welcome to Arduino Kids Programming!\n");
         printf("======================================\n");
-        printf("Easy Arduino programming for kids!\n");
-        printf("Try: %s --help for all options\n\n", argv[0]);
+        printf("🤖 Easy Arduino programming for kids!\n");
+        printf("💡 Try: %s --help for all options\n\n", argv[0]);
         
         run_kid_friendly_examples();
     }
- 
     
-    // to add : add an interface that lets the user type in , save and compile so that it generates the .ino that then is runned as c
     return 0;
 }
