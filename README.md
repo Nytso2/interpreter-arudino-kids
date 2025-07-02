@@ -37,7 +37,10 @@ python3 arduino_gui.py
 # 📖 Usage
 ## GUI Mode
 
-Run: ```bash python3 arduino_gui.py ```
+Run:
+```
+python3 arduino_gui.py 
+```
 Load program (Examples/Browse/New) ```
 Edit code in built-in editor
 Click "🚀 COMPILE TO ARDUINO"  
