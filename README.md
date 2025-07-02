@@ -16,10 +16,9 @@ Complete programming language interpreter with professional GUI for kids aged 8-
 
 **Perfect for**: Schools, makerspaces, coding camps, and STEM education.
 
-## ⚡ Quick Start
-
-### GUI Mode (Recommended)
+# GUI Mode
 ```bash
+git clone https://github.com/Nytso2/interpreter-arudino-kids.git
 gcc -o inter inter.c -lm
 python3 arduino_gui.py
 # Click "Examples" → Choose program → "COMPILE TO ARDUINO"
