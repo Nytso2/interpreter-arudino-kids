@@ -46,8 +46,11 @@ blink 13 5' > test.txt
 # 📖 Usage
 ## GUI Mode
 
-Run: ```bash python3 arduino_gui.py ```
-Load program (Examples/Browse/New) ```
+Run: 
+```bash 
+python3 arduino_gui.py
+```
+Load program (Examples/Browse/New)
 Edit code in built-in editor
 Click "🚀 COMPILE TO ARDUINO"  
 Upload .ino file to Arduino IDE
@@ -75,7 +78,7 @@ CommandDescriptionExampleturn_on <pin>Turn on LEDturn_on 13turn_off <pin>Turn of
 | `repeat <n> { ... }`        | Loop commands     | `repeat 3 { blink 13 1 }` |
 
 ## Example 
-### Input
+## Input
 
 ```bash
 turn_on 13
