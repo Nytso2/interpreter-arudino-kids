@@ -389,7 +389,7 @@ void parse_statement(Lexer* lexer, ArduinoGen* gen) {
             snprintf(code, sizeof(code), "digitalWrite(%d, HIGH);  // Turn on pin %d", pin.number, pin.number);
             add_line_arduino(gen, gen->loop_code, code);
             
-            snprintf(code, sizeof(code), "Serial.println(\"💡 Pin %d turned ON\");", pin.number);
+            snprintf(code, sizeof(code), "Serial.println(\" Pin %d turned ON\");", pin.number);
             add_line_arduino(gen, gen->loop_code, code);
             break;
         }
@@ -434,7 +434,7 @@ void parse_statement(Lexer* lexer, ArduinoGen* gen) {
             gen->indent_level--;
             
             add_line_arduino(gen, gen->loop_code, "}");
-            snprintf(code, sizeof(code), "Serial.println(\"✨ Pin %d blinked %d times\");", pin.number, times.number);
+            snprintf(code, sizeof(code), "Serial.println(\" Pin %d blinked %d times\");", pin.number, times.number);
             add_line_arduino(gen, gen->loop_code, code);
             break;
         }
@@ -627,7 +627,7 @@ void parse_statement(Lexer* lexer, ArduinoGen* gen) {
 }
 
 void finalize_arduino_code(ArduinoGen* gen) {
-    strcat(gen->setup_code, "  Serial.println(\"🚀 Arduino Kids Program Starting!\");\n");
+    strcat(gen->setup_code, "  Serial.println(\" Arduino Kids Program Starting!\");\n");
     strcat(gen->setup_code, "}\n");
     strcat(gen->loop_code, "  \n  delay(100);  // Small delay for stability\n}\n");
 }
@@ -636,12 +636,12 @@ void interpret_arduino_kids(const char* code, int show_details) {
     if (show_details) {
         printf("🔧 Arduino Kids Programming Language Interpreter\n");
         printf("===============================================\n");
-        printf("📝 Input Program:\n%s\n", code);
-        printf("🔧 Generating Arduino C++ code...\n\n");
+        printf("Input Program:\n%s\n", code);
+        printf("Generating Arduino C++ code...\n\n");
     } else {
-        printf("🎯 Arduino Kids Compiler\n");
+        printf("Arduino Kids Compiler\n");
         printf("========================\n");
-        printf("🤖 Converting your commands to Arduino code...\n\n");
+        printf("Converting your commands to Arduino code...\n\n");
     }
     
     Lexer* lexer = create_lexer((char*)code);
@@ -658,7 +658,7 @@ void interpret_arduino_kids(const char* code, int show_details) {
     } while (token.type != TOKEN_EOF);
     
     if (lexer->error_count > 0) {
-        printf("⚠️  Parsing Errors Found:\n");
+        printf("⚠Parsing Errors Found:\n");
         for (int i = 0; i < lexer->error_count; i++) {
             printf("   %s\n", lexer->errors[i]);
         }
@@ -674,7 +674,7 @@ void interpret_arduino_kids(const char* code, int show_details) {
     strcat(gen->output, gen->loop_code);
     
     if (show_details) {
-        printf("✨ Generated Arduino Code:\n");
+        printf("Generated Arduino Code:\n");
         printf("=========================\n");
         printf("%s", gen->output);
         printf("=========================\n\n");
@@ -687,17 +687,17 @@ void interpret_arduino_kids(const char* code, int show_details) {
         fclose(file);
         
         if (show_details) {
-            printf("📁 Arduino sketch saved as 'arduino_kids_program.ino'\n");
-            printf("💡 Upload this file to your Arduino using the Arduino IDE!\n\n");
+            printf("Arduino sketch saved as 'arduino_kids_program.ino'\n");
+            printf("Upload this file to your Arduino using the Arduino IDE!\n\n");
             
-            printf("📋 Pin Usage Summary:\n");
+            printf("Pin Usage Summary:\n");
             printf("---------------------\n");
             for (int i = 0; i < gen->pin_count; i++) {
                 printf("   Pin %d: Used in program\n", gen->used_pins[i]);
             }
             printf("\n");
             
-            printf("📚 Required Libraries:\n");
+            printf("Required Libraries:\n");
             printf("----------------------\n");
             if (gen->has_servo) printf("   - Servo library (built-in)\n");
             if (gen->has_lcd) printf("   - LiquidCrystal library (built-in)\n");
@@ -706,12 +706,12 @@ void interpret_arduino_kids(const char* code, int show_details) {
                 printf("   - No additional libraries needed!\n");
             }
         } else {
-            printf("✅ Arduino code generated successfully!\n");
-            printf("📁 Saved as: arduino_kids_program.ino\n");
-            printf("🎯 Ready to upload to your Arduino!\n");
+            printf(" Arduino code generated successfully!\n");
+            printf(" Saved as: arduino_kids_program.ino\n");
+            printf(" Ready to upload to your Arduino!\n");
         }
     } else {
-        printf("❌ Error: Could not create Arduino sketch file\n");
+        printf(" Error: Could not create Arduino sketch file\n");
     }
     
     free(lexer);
@@ -720,12 +720,12 @@ void interpret_arduino_kids(const char* code, int show_details) {
 
 // Example programs showcase
 void run_arduino_examples() {
-    printf("🎈 Arduino Kids Programming Language\n");
+    printf(" Arduino Kids Programming Language\n");
     printf("====================================\n");
-    printf("🌟 Professional Educational Compiler for Resume\n");
+    printf(" Professional Educational Compiler for Resume\n");
     printf("Converts kid-friendly commands to Arduino C++ code\n\n");
     
-    printf("📚 Example 1: Blinking LED\n");
+    printf(" Example 1: Blinking LED\n");
     printf("--------------------------\n");
     interpret_arduino_kids(
         "// Simple LED blink\n"
@@ -737,7 +737,7 @@ void run_arduino_examples() {
         "print \"LED demo complete!\"", 1
     );
     
-    printf("\n\n📚 Example 2: Servo Motor Control\n");
+    printf("\n\nExample 2: Servo Motor Control\n");
     printf("---------------------------------\n");
     interpret_arduino_kids(
         "// Servo sweep\n"
@@ -751,7 +751,7 @@ void run_arduino_examples() {
         "print \"Servo sweep complete!\"", 1
     );
     
-    printf("\n\n📚 Example 3: Temperature Sensor\n");
+    printf("\n\nExample 3: Temperature Sensor\n");
     printf("--------------------------------\n");
     interpret_arduino_kids(
         "// Temperature monitoring\n"
@@ -762,7 +762,7 @@ void run_arduino_examples() {
         "print \"Temperature check done!\"", 1
     );
     
-    printf("\n\n📚 Example 4: Distance Sensor\n");
+    printf("\n\nExample 4: Distance Sensor\n");
     printf("-----------------------------\n");
     interpret_arduino_kids(
         "// Ultrasonic distance sensor\n"
@@ -773,7 +773,7 @@ void run_arduino_examples() {
         "print \"Distance measured!\"", 1
     );
     
-    printf("\n\n📚 Example 5: Complex Robot Behavior\n");
+    printf("\n\nExample 5: Complex Robot Behavior\n");
     printf("------------------------------------\n");
     interpret_arduino_kids(
         "// Smart robot behavior\n"
@@ -797,9 +797,9 @@ void run_arduino_examples() {
 void run_kid_friendly_examples() {
     printf("🎮 Arduino Robot Programming for Kids!\n");
     printf("======================================\n");
-    printf("🤖 Let's program your Arduino robot with simple commands!\n\n");
+    printf("Let's program your Arduino robot with simple commands!\n\n");
     
-    printf("🔥 Example: Making an LED Blink\n");
+    printf("Example: Making an LED Blink\n");
     printf("-------------------------------\n");
     interpret_arduino_kids(
         "turn_on 13\n"
@@ -808,7 +808,7 @@ void run_kid_friendly_examples() {
         "print \"My LED is working!\"", 0
     );
     
-    printf("\n🎵 Example: Making Sounds\n");
+    printf("\n Example: Making Sounds\n");
     printf("-------------------------\n");
     interpret_arduino_kids(
         "print \"Making robot sounds!\"\n"
@@ -818,7 +818,7 @@ void run_kid_friendly_examples() {
         "print \"Beep beep!\"", 0
     );
     
-    printf("\n🔄 Example: Moving a Servo\n");
+    printf("\n Example: Moving a Servo\n");
     printf("--------------------------\n");
     interpret_arduino_kids(
         "print \"Robot arm moving!\"\n"
@@ -833,23 +833,23 @@ void run_kid_friendly_examples() {
 int main(int argc, char* argv[]) {
     if (argc > 1) {
         if (strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "-h") == 0) {
-            printf("🎯 Arduino Kids Programming Language Interpreter\n");
+            printf(" Arduino Kids Programming Language Interpreter\n");
             printf("================================================\n\n");
-            printf("🎮 For Kids Mode:\n");
+            printf(" For Kids Mode:\n");
             printf("   %s <filename>         - Compile kid-friendly Arduino program\n", argv[0]);
             printf("   %s --kids             - Run kid-friendly examples\n", argv[0]);
             printf("\n🔧 For Developers/Resume Mode:\n");
             printf("   %s --dev <filename>   - Show full Arduino C++ code generation\n", argv[0]);
             printf("   %s --showcase         - Full technical demonstration\n", argv[0]);
             printf("   %s --examples         - All example programs with details\n", argv[0]);
-            printf("\n📋 Kid-Friendly Arduino Commands:\n");
+            printf("\n Kid-Friendly Arduino Commands:\n");
             printf("   LED Control: turn_on <pin>, turn_off <pin>, blink <pin> <times>\n");
             printf("   Sound: beep <pin> <duration>, play_tone <pin> <frequency>\n");
             printf("   Servo: move_servo <pin> <angle>\n");
             printf("   Sensors: read_temperature <pin>, read_distance <trig> <echo>\n");
             printf("   Display: print_lcd \"message\", print \"message\"\n");
             printf("   Control: wait <ms>, repeat <times> { ... }, forever { ... }\n");
-            printf("\n💡 Example Arduino Kids Program:\n");
+            printf("\n Example Arduino Kids Program:\n");
             printf("   turn_on 13\n");
             printf("   wait 1000\n");
             printf("   blink 13 5\n");
@@ -878,7 +878,7 @@ int main(int argc, char* argv[]) {
                 fclose(file);
                 interpret_arduino_kids(code, 1);  // Show technical details
             } else {
-                printf("❌ Error: Could not open file '%s'\n", argv[2]);
+                printf(" Error: Could not open file '%s'\n", argv[2]);
                 return 1;
             }
             return 0;
@@ -893,16 +893,16 @@ int main(int argc, char* argv[]) {
             fclose(file);
             interpret_arduino_kids(code, 0);  // Hide technical details
         } else {
-            printf("❌ Could not find file '%s'\n", argv[1]);
-            printf("💡 Try: %s --help for usage information\n", argv[0]);
+            printf(" Could not find file '%s'\n", argv[1]);
+            printf(" Try: %s --help for usage information\n", argv[0]);
             return 1;
         }
     } else {
         // Default: show kid-friendly examples
-        printf("🎈 Welcome to Arduino Kids Programming!\n");
+        printf(" Welcome to Arduino Kids Programming!\n");
         printf("======================================\n");
-        printf("🤖 Easy Arduino programming for kids!\n");
-        printf("💡 Try: %s --help for all options\n\n", argv[0]);
+        printf(" Easy Arduino programming for kids!\n");
+        printf(" Try: %s --help for all options\n\n", argv[0]);
         
         run_kid_friendly_examples();
     }
