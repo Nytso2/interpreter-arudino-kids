@@ -1,4 +1,4 @@
-# 🤖 Arduino Kids Programming Language Interpreter
+# Arduino Kids Programming Language Interpreter
 
 [![Language](https://img.shields.io/badge/Language-C-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
 [![Platform](https://img.shields.io/badge/Platform-Arduino-green.svg)](https://www.arduino.cc/)
@@ -10,7 +10,7 @@
 
 ![Arduino Kids Programming GUI](screenshot.png)
 
-## 🌟 Overview
+## Overview
 
 Complete programming language interpreter with professional GUI for kids aged 8-16. Converts simple English commands into optimized Arduino sketches.
 
@@ -24,7 +24,7 @@ python3 arduino_gui.py
 # Click "Examples" → Choose program → "COMPILE TO ARDUINO"
 ```
 
-# 🚀 Features
+#  Features
 ## GUI Interface
 
 - Drag & Drop: Easy file loading
@@ -33,7 +33,7 @@ python3 arduino_gui.py
 - One-Click Compile: Big compile button
 - Real-time Feedback: Progress and error display
 
-# 📖 Usage
+# Usage
 ## GUI Mode
 
 Run:
@@ -51,10 +51,10 @@ Upload .ino file to Arduino IDE
 ./inter --showcase           # Run examples
 ./inter --help               # Commands
 ```
-📋 Commands
+Commands
 CommandDescriptionExampleturn_on <pin>Turn on LEDturn_on 13turn_off <pin>Turn off LEDturn_off 13blink <pin> <times>Blink LEDblink 13 5beep <pin> <duration>Make soundbeep 8 500move_servo <pin> <angle>Move servomove_servo 9 90print "text"Serial outputprint "Hello!"wait <ms>Delaywait 1000repeat <n> { }Looprepeat 3 { blink 13 1 }
 
-## 📋 Commands
+## Commands
 
 | Command Syntax               | Description       | Example                |
 |-----------------------------|-------------------|------------------------|
